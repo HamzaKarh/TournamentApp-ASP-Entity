@@ -28,16 +28,18 @@ namespace WebApplication2.Models
         [StringLength(255)]
         public string game { get; set; }
 
-        [Column("private")]
-        [Required]
-        [MaxLength(1)]
-        public byte[] _private { get; set; }
+  //      [Column("private")]
+    //    [Required]
+      //  [MaxLength(1)]
+     //   public byte[] _private { get; set; }
 
         [Required]
         [StringLength(255)]
         public string name { get; set; }
 
         [Column(TypeName = "datetime2")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? start_date { get; set; }
 
         [MaxLength(1)]

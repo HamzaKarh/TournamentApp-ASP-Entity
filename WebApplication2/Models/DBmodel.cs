@@ -65,9 +65,9 @@ namespace WebApplication2.Models
                 .Property(e => e.game)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<tournament>()
-                .Property(e => e._private)
-                .IsFixedLength();
+            //modelBuilder.Entity<tournament>()
+              //  .Property(e => e._private)
+                //.IsFixedLength();
 
             modelBuilder.Entity<tournament>()
                 .Property(e => e.name)
