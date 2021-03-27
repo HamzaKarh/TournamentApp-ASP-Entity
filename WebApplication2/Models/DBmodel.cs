@@ -16,7 +16,6 @@ namespace WebApplication2.Models
         public virtual DbSet<player> players { get; set; }
         public virtual DbSet<team> teams { get; set; }
         public virtual DbSet<tournament> tournaments { get; set; }
-        public virtual DbSet<user> users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -91,32 +90,6 @@ namespace WebApplication2.Models
                 .HasMany(e => e.teams)
                 .WithOptional(e => e.tournament)
                 .HasForeignKey(e => e.tournament_id);
-
-            modelBuilder.Entity<user>()
-                .Property(e => e.email)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<user>()
-                .Property(e => e.first_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<user>()
-                .Property(e => e.last_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<user>()
-                .Property(e => e.password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<user>()
-                .HasMany(e => e.players)
-                .WithOptional(e => e.user)
-                .HasForeignKey(e => e.user_id);
-
-            modelBuilder.Entity<user>()
-                .HasMany(e => e.tournaments)
-                .WithOptional(e => e.user)
-                .HasForeignKey(e => e.user_id);
         }
     }
 }

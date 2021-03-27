@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -128,8 +128,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\gamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TournamentController.cs" />
+    <Compile Include="Controllers\playersController.cs" />
+    <Compile Include="Controllers\teamsController.cs" />
+    <Compile Include="Controllers\tournamentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,7 +141,6 @@
     <Compile Include="Models\player.cs" />
     <Compile Include="Models\team.cs" />
     <Compile Include="Models\tournament.cs" />
-    <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,10 +179,30 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\TournamentIndexView.cshtml" />
+    <Content Include="Views\tournaments\Create.cshtml" />
+    <Content Include="Views\tournaments\Delete.cshtml" />
+    <Content Include="Views\tournaments\Details.cshtml" />
+    <Content Include="Views\tournaments\Edit.cshtml" />
+    <Content Include="Views\tournaments\Index.cshtml" />
+    <Content Include="Views\teams\Create.cshtml" />
+    <Content Include="Views\teams\Delete.cshtml" />
+    <Content Include="Views\teams\Details.cshtml" />
+    <Content Include="Views\teams\Edit.cshtml" />
+    <Content Include="Views\teams\Index.cshtml" />
+    <Content Include="Views\players\Create.cshtml" />
+    <Content Include="Views\players\Delete.cshtml" />
+    <Content Include="Views\players\Details.cshtml" />
+    <Content Include="Views\players\Edit.cshtml" />
+    <Content Include="Views\players\Index.cshtml" />
+    <Content Include="Views\games\Create.cshtml" />
+    <Content Include="Views\games\Delete.cshtml" />
+    <Content Include="Views\games\Details.cshtml" />
+    <Content Include="Views\games\Edit.cshtml" />
+    <Content Include="Views\games\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tournament\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

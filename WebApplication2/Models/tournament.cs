@@ -45,14 +45,10 @@ namespace WebApplication2.Models
 
         public int? team_size { get; set; }
 
-        public long? user_id { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<game> games { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<team> teams { get; set; }
-
-        public virtual user user { get; set; }
     }
 }
