@@ -46,7 +46,7 @@ namespace WebApplication2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,nb_participants,description,game,name,start_date,started,team_size")] tournament tournament)
+        public ActionResult Create([Bind(Include = "nb_participants,description,game,name,team_size")] tournament tournament)
         {
             if (ModelState.IsValid)
             {

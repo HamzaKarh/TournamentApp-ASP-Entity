@@ -49,10 +49,11 @@ namespace WebApplication2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,nb_members,captain_id,tournament_id")] team team)
+        public ActionResult Create([Bind(Include = "id,name, nb_members, captain_id,tournament_id")] team team)
         {
             if (ModelState.IsValid)
             {
+                tournament t = db.tournaments.Find(team.tournament_id);
                 db.teams.Add(team);
                 db.SaveChanges();
                 return RedirectToAction("Index");
