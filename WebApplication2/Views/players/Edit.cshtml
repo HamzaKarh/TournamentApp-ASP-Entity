@@ -16,7 +16,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.id)
-        @Html.HiddenFor(model => model.team)
+        @Html.HiddenFor(model => model.team_id)
 
 
         <div class="form-group">
@@ -26,7 +26,7 @@
                 @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+         
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

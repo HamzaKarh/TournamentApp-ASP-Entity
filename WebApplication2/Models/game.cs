@@ -9,10 +9,21 @@ namespace WebApplication2.Models
     [Table("game")]
     public partial class game
     {
+        public game(long? tournamentId)
+        {
+            tournament_id = tournamentId;
+        }
+
+        public game()
+        {
+        }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
 
         [Column(TypeName = "datetime2")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? date { get; set; }
 
         public long? bteam_id { get; set; }

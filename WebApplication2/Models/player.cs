@@ -1,3 +1,5 @@
+using System.Web.Mvc;
+
 namespace WebApplication2.Models
 {
     using System;
@@ -18,8 +20,10 @@ namespace WebApplication2.Models
         public player(long teamId)
         {
             team_id = teamId;
-        }
+            teams = new HashSet<team>();
 
+        }
+        [HiddenInput(DisplayValue = false)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
 

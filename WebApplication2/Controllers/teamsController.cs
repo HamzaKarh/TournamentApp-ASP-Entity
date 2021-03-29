@@ -49,7 +49,7 @@ namespace WebApplication2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name, nb_members, captain_id,tournament_id")] team team)
+        public ActionResult Create([Bind(Include = "name, nb_members, captain_id,tournament_id")] team team)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace WebApplication2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.captain_id = new SelectList(db.players, "id", "name", team.captain_id);
+            ViewBag.captain_id = new SelectList(team.players, "id", "name", team.captain_id);
             ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", team.tournament_id);
             return View(team);
         }
@@ -84,7 +84,7 @@ namespace WebApplication2.Controllers
                 return HttpNotFound();
             }
             ViewBag.captain_id = new SelectList(db.players, "id", "name", team.captain_id);
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description", team.tournament_id);
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", team.tournament_id);
             return View(team);
         }
 
@@ -93,7 +93,7 @@ namespace WebApplication2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,nb_members,captain_id,tournament_id")] team team)
+        public ActionResult Edit([Bind(Include = "id, name,nb_members,captain_id,tournament_id")] team team)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace WebApplication2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.captain_id = new SelectList(db.players, "id", "name", team.captain_id);
+            ViewBag.captain_id = new SelectList(team.players, "id", "name", team.captain_id);
             ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", team.tournament_id);
             return View(team);
         }
@@ -128,10 +128,13 @@ namespace WebApplication2.Controllers
         public ActionResult DeleteConfirmed(long id)
         {
             team team = db.teams.Find(id);
-            foreach (var p in team.players)
+           
+            foreach (player p in team.players.ToList())
             {
                 db.players.Remove(p);
             }
+            db.SaveChanges();
+
             db.teams.Remove(team);
             db.SaveChanges();
             return RedirectToAction("Index");

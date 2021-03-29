@@ -46,10 +46,11 @@ namespace WebApplication2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "nb_participants,description,game,name,start_date,team_size")] tournament tournament)
+        public ActionResult Create([Bind(Include = "id,nb_participants,description,game,name,start_date,team_size")] tournament tournament)
         {
             if (ModelState.IsValid)
             {
+                
                 db.tournaments.Add(tournament);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,6 +60,13 @@ namespace WebApplication2.Controllers
             return View(tournament);
         }
 
+
+        public ActionResult CreateGame([Bind(Include = "id,nb_participants,description,game,name,start_date,team_size")] long? id)
+        {
+
+            tournament t = db.tournaments.Find(id);
+            return RedirectToAction("Create", "games", new game(tournamentId: t.id));
+        }
         // GET: tournaments/Edit/5
         public ActionResult Edit(long? id)
         {
@@ -79,7 +87,7 @@ namespace WebApplication2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,nb_participants,description,game,name,start_date,started,team_size")] tournament tournament)
+        public ActionResult Edit([Bind(Include = "id, nb_participants,description,game,name,start_date,team_size")] tournament tournament)
         {
             if (ModelState.IsValid)
             {

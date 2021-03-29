@@ -12,19 +12,21 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.team.name)
+            Blue team
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.team1.name)
+            Red team
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.team2.name)
+            Winner
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tournament.description)
+            Tournament
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.date)
+            Game date
         </th>
         <th></th>
     </tr>
@@ -41,7 +43,7 @@
             @Html.DisplayFor(modelItem => item.team2.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tournament.description)
+            @Html.DisplayFor(modelItem => item.tournament.name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.date)

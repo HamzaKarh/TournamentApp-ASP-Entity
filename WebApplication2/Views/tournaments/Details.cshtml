@@ -10,16 +10,16 @@
     <h4>tournament</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.nb_participants)
+            Tournament name
         </dt>
-
+        
         <dd>
-            @Html.DisplayFor(model => model.nb_participants)
+            @Html.DisplayFor(model => model.name)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.description)
+            Description
         </dt>
 
         <dd>
@@ -27,13 +27,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.game)
+            Game
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.game)
         </dd>
 
+        <dt>
+            Number of participants
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_participants)
+        </dd>
         @*
         <dt>
             @Html.DisplayNameFor(model => model._private)
@@ -44,32 +51,28 @@
         </dd>
         *@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
+        
 
         <dt>
-            @Html.DisplayNameFor(model => model.start_date)
+            Start date
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.start_date)
         </dd>
 
+        @*
         <dt>
-            @Html.DisplayNameFor(model => model.started)
+            Started
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.started)
         </dd>
+        *@
 
         <dt>
-            @Html.DisplayNameFor(model => model.team_size)
+            Team size
         </dt>
 
         <dd>
@@ -80,5 +83,7 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Add a team", "addTeam", new {id = Model.id}) |
+     @Html.ActionLink("Create a new tournament game", "CreateGame", new {id = Model.id})|
     @Html.ActionLink("Back to List", "Index")
 </p>

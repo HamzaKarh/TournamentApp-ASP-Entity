@@ -99,10 +99,10 @@ namespace WebApplication2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.rteam_id = new SelectList(db.teams, "id", "name", game.rteam_id);
+            ViewBag.rteam_id = new SelectList(game.tournament.teams, "id", "name", game.rteam_id);
+            ViewBag.bteam_id = new SelectList(game.tournament.teams, "id", "name", game.bteam_id);
             ViewBag.winner_id = new SelectList(db.teams, "id", "name", game.winner_id);
-            ViewBag.bteam_id = new SelectList(db.teams, "id", "name", game.bteam_id);
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description", game.tournament_id);
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", game.tournament_id);
             return View(game);
         }
 

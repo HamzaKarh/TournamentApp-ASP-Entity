@@ -82,10 +82,12 @@ namespace WebApplication2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,team_id")] player player)
+        public ActionResult Edit([Bind(Include = "id, name , team_id")] player player)
         {
             if (ModelState.IsValid)
             {
+                
+
                 db.Entry(player).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,6 +117,13 @@ namespace WebApplication2.Controllers
         public ActionResult DeleteConfirmed(long id)
         {
             player player = db.players.Find(id);
+            if (player.team.captain_id == id)
+            {
+                team t = player.team;
+                t.captain_id = null;
+                db.Entry(t).State = EntityState.Modified;
+                
+            }
             db.players.Remove(player);
             db.SaveChanges();
             return RedirectToAction("Index");
