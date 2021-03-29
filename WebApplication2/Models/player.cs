@@ -15,7 +15,12 @@ namespace WebApplication2.Models
             teams = new HashSet<team>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public player(long teamId)
+        {
+            team_id = teamId;
+        }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
 
         [Required]

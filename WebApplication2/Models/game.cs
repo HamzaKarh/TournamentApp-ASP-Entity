@@ -9,7 +9,7 @@ namespace WebApplication2.Models
     [Table("game")]
     public partial class game
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
 
         [Column(TypeName = "datetime2")]

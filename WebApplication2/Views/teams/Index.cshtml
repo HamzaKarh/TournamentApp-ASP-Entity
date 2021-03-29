@@ -12,38 +12,41 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.player.name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.tournament.description)
+            Captain name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.name)
+            Tournament name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.nb_members)
+            Number of members
         </th>
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.player.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tournament.description)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.player.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tournament.name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.nb_members)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new {id = item.id}) |
+            @Html.ActionLink("Details", "Details", new {id = item.id}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.id}) |
+            @Html.ActionLink("Join", "addPlayer", new {id = item.id})
         </td>
     </tr>
 }

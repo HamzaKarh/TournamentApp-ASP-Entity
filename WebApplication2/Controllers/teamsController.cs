@@ -40,7 +40,7 @@ namespace WebApplication2.Controllers
         public ActionResult Create()
         {
             ViewBag.captain_id = new SelectList(db.players, "id", "name");
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description");
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name");
             return View();
         }
 
@@ -62,6 +62,12 @@ namespace WebApplication2.Controllers
             ViewBag.captain_id = new SelectList(db.players, "id", "name", team.captain_id);
             ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description", team.tournament_id);
             return View(team);
+        }
+
+        public ActionResult addPlayer(long? id)
+        {
+            team t = db.teams.Find(id);
+            return RedirectToAction("Create", "players", new player(teamId:  t.id));
         }
 
         // GET: teams/Edit/5

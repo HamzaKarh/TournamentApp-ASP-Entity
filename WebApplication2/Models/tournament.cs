@@ -16,8 +16,12 @@ namespace WebApplication2.Models
             teams = new HashSet<team>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
+        
+        [Required]
+        [StringLength(255)]
+        public string name { get; set; }
 
         public int? nb_participants { get; set; }
 
@@ -33,10 +37,7 @@ namespace WebApplication2.Models
       //  [MaxLength(1)]
      //   public byte[] _private { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string name { get; set; }
-
+        
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
