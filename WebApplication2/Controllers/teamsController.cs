@@ -54,13 +54,14 @@ namespace WebApplication2.Controllers
             if (ModelState.IsValid)
             {
                 tournament t = db.tournaments.Find(team.tournament_id);
+                team.nb_members = t.team_size;
                 db.teams.Add(team);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.captain_id = new SelectList(db.players, "id", "name", team.captain_id);
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description", team.tournament_id);
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", team.tournament_id);
             return View(team);
         }
 
@@ -101,7 +102,7 @@ namespace WebApplication2.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.captain_id = new SelectList(db.players, "id", "name", team.captain_id);
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description", team.tournament_id);
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", team.tournament_id);
             return View(team);
         }
 
@@ -112,6 +113,7 @@ namespace WebApplication2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             team team = db.teams.Find(id);
             if (team == null)
             {
@@ -126,6 +128,10 @@ namespace WebApplication2.Controllers
         public ActionResult DeleteConfirmed(long id)
         {
             team team = db.teams.Find(id);
+            foreach (var p in team.players)
+            {
+                db.players.Remove(p);
+            }
             db.teams.Remove(team);
             db.SaveChanges();
             return RedirectToAction("Index");
