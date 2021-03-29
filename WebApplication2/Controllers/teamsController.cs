@@ -83,7 +83,7 @@ namespace WebApplication2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.captain_id = new SelectList(db.players, "id", "name", team.captain_id);
+            ViewBag.captain_id = new SelectList(team.players, "id", "name", team.captain_id);
             ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", team.tournament_id);
             return View(team);
         }

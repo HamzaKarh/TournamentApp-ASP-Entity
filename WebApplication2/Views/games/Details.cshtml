@@ -11,39 +11,39 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.team.name)
-        </dt>
+            Red team
+            </dt>
 
         <dd>
             @Html.DisplayFor(model => model.team.name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.team1.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.team1.name)
-        </dd>
+       
 
         <dt>
-            @Html.DisplayNameFor(model => model.team2.name)
+            Blue team
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.team2.name)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.tournament.description)
+            Winner 
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.tournament.description)
+            @Html.DisplayFor(model => model.team1.name)
+        </dd>
+        <dt>
+            Tournament name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(tmodel => tmodel.tournament.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.date)
+           Game date
         </dt>
 
         <dd>

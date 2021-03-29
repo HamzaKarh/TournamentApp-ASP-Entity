@@ -9,9 +9,10 @@ namespace WebApplication2.Models
     [Table("game")]
     public partial class game
     {
-        public game(long? tournamentId)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public game(tournament t)
         {
-            tournament_id = tournamentId;
+            tournament = t;
         }
 
         public game()
@@ -21,6 +22,7 @@ namespace WebApplication2.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
 
+        
         [Column(TypeName = "datetime2")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

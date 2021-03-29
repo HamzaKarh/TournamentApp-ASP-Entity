@@ -40,6 +40,7 @@ namespace WebApplication2.Controllers
         {
             return View(new tournament());
         }
+        
 
         // POST: tournaments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -65,7 +66,7 @@ namespace WebApplication2.Controllers
         {
 
             tournament t = db.tournaments.Find(id);
-            return RedirectToAction("Create", "games", new game(tournamentId: t.id));
+            return RedirectToAction("Create", "games", new game(t:t));
         }
         // GET: tournaments/Edit/5
         public ActionResult Edit(long? id)
@@ -128,6 +129,18 @@ namespace WebApplication2.Controllers
         public ActionResult DeleteConfirmed(long id)
         {
             tournament tournament = db.tournaments.Find(id);
+            foreach (team t in tournament.teams.ToList())
+            {
+                foreach (player p in t.players.ToList())
+                {
+                    db.players.Remove(p);
+                }
+                db.SaveChanges();
+                db.teams.Remove(t);
+            }
+            db.SaveChanges();
+            db.games.RemoveRange(tournament.games);
+            db.SaveChanges();
             db.tournaments.Remove(tournament);
             db.SaveChanges();
             return RedirectToAction("Index");

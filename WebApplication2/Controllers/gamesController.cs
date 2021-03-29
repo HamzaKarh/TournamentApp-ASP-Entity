@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
 
@@ -20,6 +16,11 @@ namespace WebApplication2.Controllers
             var games = db.games.Include(g => g.team).Include(g => g.team1).Include(g => g.team2).Include(g => g.tournament);
             return View(games.ToList());
         }
+/*      /*public ActionResult Index(long? tournament_id)
+        {
+            var games = db.games.Include(g => g.team).Include(g => g.team1).Include(g => g.team2).Include(g => g.tournament);
+            return View(games.ToList());
+        }*/
 
         // GET: games/Details/5
         public ActionResult Details(long? id)
@@ -42,9 +43,10 @@ namespace WebApplication2.Controllers
             ViewBag.rteam_id = new SelectList(db.teams, "id", "name");
             ViewBag.winner_id = new SelectList(db.teams, "id", "name");
             ViewBag.bteam_id = new SelectList(db.teams, "id", "name");
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description");
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name");
             return View();
         }
+
 
         // POST: games/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -63,7 +65,7 @@ namespace WebApplication2.Controllers
             ViewBag.rteam_id = new SelectList(db.teams, "id", "name", game.rteam_id);
             ViewBag.winner_id = new SelectList(db.teams, "id", "name", game.winner_id);
             ViewBag.bteam_id = new SelectList(db.teams, "id", "name", game.bteam_id);
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description", game.tournament_id);
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", game.tournament_id);
             return View(game);
         }
 
@@ -79,10 +81,12 @@ namespace WebApplication2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.rteam_id = new SelectList(db.teams, "id", "name", game.rteam_id);
+
+            tournament t = db.tournaments.Find(game.tournament_id);
             ViewBag.winner_id = new SelectList(db.teams, "id", "name", game.winner_id);
+            ViewBag.rteam_id = new SelectList(db.teams, "id", "name", game.rteam_id);
             ViewBag.bteam_id = new SelectList(db.teams, "id", "name", game.bteam_id);
-            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "description", game.tournament_id);
+            ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", game.tournament_id);
             return View(game);
         }
 
@@ -99,10 +103,10 @@ namespace WebApplication2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.rteam_id = new SelectList(game.tournament.teams, "id", "name", game.rteam_id);
-            ViewBag.bteam_id = new SelectList(game.tournament.teams, "id", "name", game.bteam_id);
-            ViewBag.winner_id = new SelectList(db.teams, "id", "name", game.winner_id);
+            ViewBag.rteam_id = new SelectList(db.teams, "id", "name", game.rteam_id);
             ViewBag.tournament_id = new SelectList(db.tournaments, "id", "name", game.tournament_id);
+            ViewBag.bteam_id = new SelectList(db.teams, "id", "name", game.bteam_id);
+            ViewBag.winner_id = new SelectList(db.teams, "id", "name", game.winner_id);
             return View(game);
         }
 

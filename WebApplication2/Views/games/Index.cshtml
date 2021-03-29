@@ -12,12 +12,11 @@
 <table class="table">
     <tr>
         <th>
-            Blue team
+            Red team
 
         </th>
         <th>
-            Red team
-
+            Blue team
         </th>
         <th>
             Winner
@@ -28,25 +27,25 @@
         <th>
             Game date
         </th>
-        <th></th>
+        <th>Actions</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.team.name)
+            @Html.DisplayFor(model => item.team.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.team1.name)
+            @Html.DisplayFor(model => item.team2.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.team2.name)
+            @Html.DisplayFor(model => item.team1.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tournament.name)
+            @Html.DisplayFor(model => item.tournament.name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.date)
+            @Html.DisplayFor(model => item.date)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
