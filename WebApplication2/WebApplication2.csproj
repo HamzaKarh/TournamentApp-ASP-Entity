@@ -136,11 +136,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103300532044_changeAllDB.cs" />
+    <Compile Include="Migrations\202103300532044_changeAllDB.Designer.cs">
+      <DependentUpon>202103300532044_changeAllDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DBmodel.cs" />
     <Compile Include="Models\game.cs" />
     <Compile Include="Models\player.cs" />
     <Compile Include="Models\team.cs" />
     <Compile Include="Models\tournament.cs" />
+    <Compile Include="Models\user.cs" />
+    <Compile Include="Models\userRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +222,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103300532044_changeAllDB.resx">
+      <DependentUpon>202103300532044_changeAllDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

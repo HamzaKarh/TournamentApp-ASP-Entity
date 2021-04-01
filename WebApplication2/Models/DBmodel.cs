@@ -5,11 +5,12 @@ using System.Linq;
 
 namespace WebApplication2.Models
 {
-    public partial class DBmodel : DbContext
+    public class DBmodel : DbContext
     {
         public DBmodel()
             : base("name=DBmodel")
         {
+            Database.SetInitializer<DBmodel>(null);
         }
 
         public virtual DbSet<game> games { get; set; }

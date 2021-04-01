@@ -51,7 +51,6 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                
                 db.tournaments.Add(tournament);
                 db.SaveChanges();
                 return RedirectToAction("Index");
