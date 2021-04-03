@@ -17,6 +17,10 @@ namespace WebApplication2.Models
         public virtual DbSet<player> players { get; set; }
         public virtual DbSet<team> teams { get; set; }
         public virtual DbSet<tournament> tournaments { get; set; }
+        
+        public virtual DbSet<user> users { get; set; }
+        
+        public virtual DbSet<userRole> UserRoles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
