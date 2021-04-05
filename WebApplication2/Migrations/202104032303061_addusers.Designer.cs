@@ -7,13 +7,13 @@ namespace WebApplication2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class changeAllDB : IMigrationMetadata
+    public sealed partial class addusers : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(changeAllDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addusers));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103300532044_changeAllDB"; }
+            get { return "202104032303061_addusers"; }
         }
         
         string IMigrationMetadata.Source
