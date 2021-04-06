@@ -2,25 +2,29 @@ using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
+using System.Web.Services.Description;
+
+
 
 namespace WebApplication2.Models
 {
     public class DBmodel : DbContext
     {
-        public DBmodel()
-            : base("name=DBmodel")
-        {
-            Database.SetInitializer<DBmodel>(null);
-        }
+        
 
         public virtual DbSet<game> games { get; set; }
         public virtual DbSet<player> players { get; set; }
         public virtual DbSet<team> teams { get; set; }
         public virtual DbSet<tournament> tournaments { get; set; }
-        
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<userRole> userRoles { get; set; }
         
-        public virtual DbSet<userRole> UserRoles { get; set; }
+        
+        public DBmodel()
+            : base("name=DBmodel")
+        {
+            //Database.SetInitializer<DBmodel>(null);
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -95,6 +99,7 @@ namespace WebApplication2.Models
                 .HasMany(e => e.teams)
                 .WithOptional(e => e.tournament)
                 .HasForeignKey(e => e.tournament_id);
+            
         }
     }
 }

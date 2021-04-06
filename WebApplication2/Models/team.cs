@@ -10,8 +10,11 @@ namespace WebApplication2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public team()
         {
+            //red team
             games = new HashSet<game>();
+            //winner
             games1 = new HashSet<game>();
+            //blue team
             games2 = new HashSet<game>();
             players = new HashSet<player>();
         }

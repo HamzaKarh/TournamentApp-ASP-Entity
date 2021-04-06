@@ -13,7 +13,7 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-        
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -25,6 +25,19 @@ namespace WebApplication2.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        [Authorize (Roles = "user,admin")]
+        public ActionResult User_page()
+        {
+            return View();
+        }
+
+        /* Si l'utilisateur n'est pas un admin, il sera redirigé vers la page login pour qu'il se connecte en tant qu'admin */
+        [Authorize (Roles = "admin")]
+        public ActionResult Admin_page()
+        {
             return View();
         }
     }

@@ -10,7 +10,7 @@ namespace WebApplication2.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
     } 
 }

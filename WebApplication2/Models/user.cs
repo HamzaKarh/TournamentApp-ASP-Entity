@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApplication2.Models
 {
     [Table("user")]
-    public partial class user
+    public partial class user 
     {
         
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -16,10 +16,19 @@ namespace WebApplication2.Models
             last_name = ln;
             email = em;
             password = pwd;
+            tournaments = new HashSet<tournament>();
+        }
+
+        public user()
+        {
+            /* Par defaut nous assignons la valeur 1, qui correspond au role user*/
+            role_id = 1;
+            tournaments = new HashSet<tournament>();
         }
         
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long id { get; set; }
+        [Key]
+        public long user_id { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -35,11 +44,13 @@ namespace WebApplication2.Models
         [Required]
         public string password { get; set; }
         
-        [Required]
+        public int? role_id { get; set; }
         [ForeignKey("role_id")]
-        public int role_id { get; set; }
         
-        public userRole UserRole { get; set; }
+        public userRole Role { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public ICollection<tournament> tournaments { get; set; }
+
         
         
 
