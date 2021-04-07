@@ -14,6 +14,7 @@ namespace WebApplication2
     {
         protected void Application_Start()
         {
+            
             using (DBmodel db = new DBmodel())
             {
                 if (db.userRoles.Count() == 0)
@@ -30,7 +31,7 @@ namespace WebApplication2
 
                 }
             }
-
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

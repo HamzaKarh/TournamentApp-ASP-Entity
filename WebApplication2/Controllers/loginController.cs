@@ -44,11 +44,13 @@ namespace WebApplication2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(user user)
         {
+            
             var pwd = EncryptPassword(user.password);
             user.password = pwd;
             db.users.Add(user);
             db.SaveChanges();
             ModelState.Clear();
+            
             return RedirectToAction("Login");
 
         }
@@ -61,6 +63,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Login(login login)
         {
+            
             var pwd = EncryptPassword(login.Password);
                 var user = db.users.Where(a => a.email == login.Email && a.password == pwd).FirstOrDefault();
                 if(user != null)
@@ -80,6 +83,7 @@ namespace WebApplication2.Controllers
                         return RedirectToAction("Admin_page", "Home");
                     }
                 }
+            
             return View();
         }
 

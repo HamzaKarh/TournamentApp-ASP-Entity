@@ -39,6 +39,7 @@ namespace WebApplication2
 
         public override string[] GetRolesForUser(string username)
         {
+            
             var user = db.users.Include("Role").Where(a => a.email == username).FirstOrDefault().Role.role_name;
             string[] role = { user };
             return role;

@@ -28,7 +28,7 @@ namespace WebApplication2.Models
         
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public long user_id { get; set; }
+        public int id { get; set; }
 
         [Required]
         [StringLength(255)]

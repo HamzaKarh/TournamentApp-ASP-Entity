@@ -99,7 +99,7 @@ namespace WebApplication2.Models
                 .HasMany(e => e.teams)
                 .WithOptional(e => e.tournament)
                 .HasForeignKey(e => e.tournament_id);
-            
+
         }
     }
 }

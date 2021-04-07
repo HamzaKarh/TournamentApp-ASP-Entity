@@ -137,9 +137,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104041443049_addUsers.cs" />
-    <Compile Include="Migrations\202104041443049_addUsers.Designer.cs">
-      <DependentUpon>202104041443049_addUsers.cs</DependentUpon>
+    <Compile Include="Migrations\202104070237020_deleteusersfkInTournament.cs" />
+    <Compile Include="Migrations\202104070237020_deleteusersfkInTournament.Designer.cs">
+      <DependentUpon>202104070237020_deleteusersfkInTournament.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DBmodel.cs" />
@@ -231,8 +231,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202104041443049_addUsers.resx">
-      <DependentUpon>202104041443049_addUsers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104070237020_deleteusersfkInTournament.resx">
+      <DependentUpon>202104070237020_deleteusersfkInTournament.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

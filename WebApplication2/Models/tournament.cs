@@ -16,6 +16,7 @@ namespace WebApplication2.Models
             teams = new HashSet<team>();
         }
 
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
 
@@ -47,8 +48,6 @@ namespace WebApplication2.Models
         public byte[] started { get; set; }
 
         public int? team_size { get; set; }
-
-        public int? user_id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<game> games { get; set; }
