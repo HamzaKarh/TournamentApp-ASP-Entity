@@ -130,18 +130,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\gamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\playersController.cs" />
     <Compile Include="Controllers\teamsController.cs" />
     <Compile Include="Controllers\tournamentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104070237020_deleteusersfkInTournament.cs" />
+    <Compile Include="Migrations\202104070237020_deleteusersfkInTournament.Designer.cs">
+      <DependentUpon>202104070237020_deleteusersfkInTournament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DBmodel.cs" />
     <Compile Include="Models\game.cs" />
+    <Compile Include="Models\login.cs" />
     <Compile Include="Models\player.cs" />
     <Compile Include="Models\team.cs" />
     <Compile Include="Models\tournament.cs" />
+    <Compile Include="Models\user.cs" />
+    <Compile Include="Models\userRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -165,14 +175,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -199,6 +201,18 @@
     <Content Include="Views\games\Details.cshtml" />
     <Content Include="Views\games\Edit.cshtml" />
     <Content Include="Views\games\Index.cshtml" />
+    <Content Include="Views\login\Register.cshtml" />
+    <Content Include="Views\login\Login.cshtml" />
+    <Content Include="Views\Home\User_page.cshtml" />
+    <Content Include="Views\Home\Admin_page.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -215,6 +229,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202104070237020_deleteusersfkInTournament.resx">
+      <DependentUpon>202104070237020_deleteusersfkInTournament.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
